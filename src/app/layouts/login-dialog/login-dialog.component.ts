@@ -41,4 +41,9 @@ export class LoginDialogComponent {
       }
     );
   }
+  onKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.onLogin();
+    }
+  }
 }

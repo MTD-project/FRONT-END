@@ -28,7 +28,7 @@ const routes: Routes = [
         {
           path: 'user', component: UserComponent, canActivate: [UserGuard],
           children: [
-            {path: '',  component: CalendarioComponent },
+            {path: 'calendario',  component: CalendarioComponent },
             {path: 'lista-usuarios',  component: GestionUsuariosComponent },
             {path: 'areas',  component: AreasComponent },
             {path: 'actividades',  component: ActividadesComponent },

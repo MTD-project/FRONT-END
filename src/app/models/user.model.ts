@@ -17,7 +17,6 @@ export interface Usuario {
   nombre: string;
   telefono: string;
   correo: string;
-  username: string;
   enabled: boolean;
   rol: string;
 }

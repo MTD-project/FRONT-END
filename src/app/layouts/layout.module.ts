@@ -12,6 +12,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -21,18 +22,19 @@ import {MatCardModule} from "@angular/material/card";
     LoginDialogComponent
   ],
 
-  imports: [
-    CommonModule,
-    RouterLink,
-    HttpClientModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatCardModule
-  ],
+    imports: [
+        CommonModule,
+        RouterLink,
+        HttpClientModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatCardModule,
+        FormsModule
+    ],
 
   exports: [
     HeaderComponent,

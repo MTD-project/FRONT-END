@@ -6,11 +6,11 @@
   <form>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Correo</mat-label>
-      <input matInput type="email" name="correo" placeholder="Ingresa tu correo" required>
+      <input matInput type="email" name="correo" placeholder="Ingresa tu correo" [(ngModel)]="loginData.correo" (keydown)="onKeyDown($event)" required >
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" name="password" placeholder="Ingresa tu contraseña" required>
+      <input matInput type="password" name="password" placeholder="Ingresa tu contraseña" [(ngModel)]="loginData.password" (keydown)="onKeyDown($event)" required >
     </mat-form-field>
     <div mat-dialog-actions align="end" class="action-buttons">
       <button class="btn mt-4" (click)="onLogin()">Iniciar Sesión</button>
