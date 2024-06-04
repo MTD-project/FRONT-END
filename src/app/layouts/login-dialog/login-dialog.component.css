@@ -18,24 +18,25 @@
 
 .action-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Asegura que los botones estén uno encima del otro */
   align-items: center;
   margin-top: 20px;
 }
+
 .action-buttons button {
   width: 80%; /* Ajusta este valor según sea necesario */
+  max-width: 300px; /* Para que no se expandan demasiado */
   margin-bottom: 10px; /* Espacio entre los botones */
 }
 
-
 .login-button {
-  background-color: #92297C;/* Color morado */
+  background-color: #92297C; /* Color morado */
   color: white !important; /* Color del texto blanco */
   font-weight: bold;
 }
 
 .cancel-button {
-  background-color: #3DB6B1;/* Color turquesa */
+  background-color: #3DB6B1; /* Color turquesa */
   color: white !important; /* Color del texto blanco */
   font-weight: bold;
 }
@@ -44,6 +45,8 @@
   display: block;
   margin-top: 10px;
   color: inherit;
+  cursor: pointer; /* Hace el enlace seleccionable */
+  text-decoration: underline; /* Añade subrayado al enlace */
 }
 
 .additional-actions {
