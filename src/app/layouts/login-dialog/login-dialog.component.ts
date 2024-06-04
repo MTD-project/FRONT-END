@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import Swal from "sweetalert2";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login-dialog',
@@ -17,13 +18,15 @@ export class LoginDialogComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialogRef: MatDialogRef<LoginDialogComponent>
   ) {}
 
   onLogin() {
     this.authService.login(this.loginData.correo, this.loginData.password).subscribe(
       () => {
         this.authService.getRole().subscribe(role => {
+          this.dialogRef.close(); // Agregado para cerrar dialog
           if (role === 'ADMIN') {
             this.router.navigate(['/intranet/admin']);
           } else {
@@ -45,5 +48,10 @@ export class LoginDialogComponent {
     if (event.key === 'Enter') {
       this.onLogin();
     }
+  }
+
+  onRegister() {
+    this.dialogRef.close(); // Cerrar el diálogo antes de la navegación
+    this.router.navigate(['/ingreso/register']);
   }
 }
