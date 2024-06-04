@@ -28,6 +28,7 @@ export class RegisterUserComponent implements OnInit{
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
       telefono: [''],
       correo: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -40,8 +41,8 @@ export class RegisterUserComponent implements OnInit{
       return;
     }
 
-    const { nombre, telefono, correo, password } = this.registerForm.value;
-    const registerData = { nombre, telefono, correo, password };
+    const { nombre, apellido, telefono, correo, password } = this.registerForm.value;
+    const registerData = { nombre, apellido, telefono, correo, password };
 
     this.authService.register(registerData).subscribe(
       (response) => {

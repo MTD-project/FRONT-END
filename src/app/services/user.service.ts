@@ -36,4 +36,18 @@ export class UserService {
     });
     return this.http.delete<string>(`${this.apiUrl}/perfil/eliminar`, { headers });
   }
+
+  obtenerUsuarios(): Observable<Usuario[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<Usuario[]>(`${this.apiUrl}/listar`, { headers });
+  }
+
+  actualizarRoles(data: { selectedUsers: number[], newRole: string }): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.put(`${this.apiUrl}/actualizar-roles`, data, { headers });
+  }
 }

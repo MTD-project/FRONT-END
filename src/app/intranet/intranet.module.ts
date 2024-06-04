@@ -15,7 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FullCalendarModule} from "@fullcalendar/angular";
 import {MatSelectModule} from "@angular/material/select";
@@ -27,6 +27,9 @@ import {LayoutModule} from "../layouts/layout.module";
 import {UserComponent} from "./user/user.component";
 import {AdminComponent} from "./admin/admin.component";
 import {InicioComponent} from "./inicio.component";
+import {MatTableDataSource, MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -62,7 +65,11 @@ import {InicioComponent} from "./inicio.component";
     MatExpansionModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    MatSnackBarModule
+
   ]
 })
 export class IntranetModule {
