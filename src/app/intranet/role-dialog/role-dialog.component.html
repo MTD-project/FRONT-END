@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Cambiar Roles</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Seleccionar Rol</mat-label>
+    <mat-select [(value)]="data.newRole">
+      <mat-option value="admin">Admin</mat-option>
+      <mat-option value="user">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data.newRole">Guardar</button>
+</div>
