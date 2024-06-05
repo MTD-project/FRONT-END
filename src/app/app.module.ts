@@ -12,6 +12,7 @@ import {MatCardModule} from "@angular/material/card";
 import {HttpClientModule} from "@angular/common/http";
 import {LayoutModule} from "./layouts/layout.module";
 import {AuthenticationModule} from "./authentication/authentication.module";
+import { LoginDialogComponent } from './layouts/login-dialog/login-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,6 @@ import {AuthenticationModule} from "./authentication/authentication.module";
 
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, LoginDialogComponent],
 })
 export class AppModule { }

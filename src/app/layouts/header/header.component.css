@@ -1,11 +1,19 @@
 /* Estilos generales para la navbar */
 .navbar {
-  background-color: #800080; /* Morado */
+  background-color: #800080;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+header.navbarlogueada {
+  background-color: #3DB6B1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
 
 /* Estilos para el logotipo */
 .logo {
@@ -47,5 +55,23 @@
 
 .usericon img {
   height: 100%; /* Asegura que la imagen ocupe todo el contorno del contenedor */
+}
+
+.nav-menu-link{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: 550;
+  padding-right: 10px;
+  font-size: 25px;
+  margin-inline: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.nav-menu-link:hover{
+  text-decoration: underline;
+  font-size: 30px;
+  transition: 0.5s;
 }
 

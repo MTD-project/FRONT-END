@@ -1,4 +1,4 @@
-<header class="navbar">
+<header *ngIf="isLoggedIn; else loggedOut" class="navbarlogueada">
   <nav class="nav">
     <a routerLink="/" class="logo">
       <img src="assets/img/LOGASO.png">
@@ -7,12 +7,33 @@
   </nav>
   <nav>
     <ul class="nav-menu">
+      <li class="nav-menu-item"><a [routerLink]="['/areas']" class="nav-menu-link">AREAS</a></li>
+      <li class="nav-menu-item"><a routerLink="" class="nav-menu-link">USUARIOS</a></li>
       <div class="user">
         <li class="usericon">
-          <img src="assets/img/usuarioBContorno.png" class="usericon" (click)="openLoginDialog()">
+          <img src="assets/img/usuarioBContorno.png" class="usericon" (click)="logout()">
         </li>
       </div>
     </ul>
   </nav>
 </header>
 
+<ng-template #loggedOut>
+  <header class="navbar">
+    <nav class="nav">
+      <a routerLink="/" class="logo">
+        <img src="assets/img/LOGASO.png">
+        <span class="logotexto">MAKE THE<br>DIFFERENCE</span>
+      </a>
+    </nav>
+    <nav>
+      <ul class="nav-menu">
+        <div class="user">
+          <li class="usericon">
+            <img src="assets/img/usuarioBContorno.png" class="usericon" (click)="openLoginDialog()">
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </header>
+</ng-template>

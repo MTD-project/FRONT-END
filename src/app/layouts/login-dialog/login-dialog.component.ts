@@ -22,6 +22,11 @@ export class LoginDialogComponent {
     private dialogRef: MatDialogRef<LoginDialogComponent>
   ) {}
 
+  onSubmit() {
+    this.authService.login(this.loginData.correo, this.loginData.password);
+    this.dialogRef.close();
+  }
+
   onLogin() {
     this.authService.login(this.loginData.correo, this.loginData.password).subscribe(
       () => {
