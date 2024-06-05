@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
-import { UserService} from "../../services/user.service";
-import { Usuario} from "../../models/user.model";
+import { UserService } from "../../services/user.service";
+import { Usuario } from "../../models/user.model";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 
@@ -13,8 +13,8 @@ import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
   styleUrls: ['./gestion-usuarios.component.css']
 })
 export class GestionUsuariosComponent implements OnInit {
-  displayedColumns: string[] = ['select', 'name', 'role'];
-  dataSource = new MatTableDataSource<Usuario>(); // Inicializado aquí
+  displayedColumns: string[] = ['select', 'nombre', 'apellido', 'correo', 'telefono', 'rol'];
+  dataSource = new MatTableDataSource<Usuario>();
   selection = new SelectionModel<Usuario>(true, []);
 
   constructor(
@@ -24,9 +24,17 @@ export class GestionUsuariosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.obtenerUsuarios().subscribe(users => {
-      this.dataSource.data = users;
-    });
+    this.userService.obtenerUsuarios().subscribe(
+      (users: Usuario[]) => {
+        this.dataSource.data = users;
+      },
+      error => {
+        console.error('Error al cargar los usuarios', error);
+        this.snackBar.open('Error al cargar los usuarios', 'Cerrar', {
+          duration: 3000,
+        });
+      }
+    );
   }
 
   isAllSelected() {
@@ -56,7 +64,7 @@ export class GestionUsuariosComponent implements OnInit {
 
     const dialogRef = this.dialog.open(RoleDialogComponent, {
       width: '250px',
-      data: { selectedUsers }
+      data: { selectedUsers, newRole: '' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -70,6 +78,11 @@ export class GestionUsuariosComponent implements OnInit {
             duration: 2000,
           });
           this.ngOnInit();
+        }, error => {
+          console.error('Error al actualizar los roles', error);
+          this.snackBar.open('Error al actualizar los roles', 'Cerrar', {
+            duration: 3000,
+          });
         });
       }
     });

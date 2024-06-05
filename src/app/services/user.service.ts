@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {DatosActualizarUsuario, Usuario} from '../models/user.model';
+import { Usuario } from '../models/user.model';
 import baserUrl from "./helper";
 
 @Injectable({
@@ -11,31 +11,6 @@ export class UserService {
   private apiUrl = `${baserUrl}/api/v1/usuario`;
 
   constructor(private http: HttpClient) {}
-
-  registerUser(user: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(`${this.apiUrl}/register`, user);
-  }
-
-  obtenerPerfil(): Observable<Usuario> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    return this.http.get<Usuario>(`${this.apiUrl}/perfil`, { headers });
-  }
-
-  actualizarPerfil(datos: DatosActualizarUsuario): Observable<Usuario> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    return this.http.put<Usuario>(`${this.apiUrl}/perfil/actualizar`, datos, { headers });
-  }
-
-  eliminarCuenta(): Observable<string> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
-    });
-    return this.http.delete<string>(`${this.apiUrl}/perfil/eliminar`, { headers });
-  }
 
   obtenerUsuarios(): Observable<Usuario[]> {
     const headers = new HttpHeaders({
@@ -49,5 +24,12 @@ export class UserService {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.put(`${this.apiUrl}/actualizar-roles`, data, { headers });
+  }
+
+  obtenerRoles(): Observable<string[]> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    return this.http.get<string[]>(`${this.apiUrl}/roles`, { headers });
   }
 }

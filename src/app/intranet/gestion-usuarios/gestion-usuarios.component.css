@@ -1,7 +1,14 @@
-.spacer {
-  flex: 1 1 auto;
+.full-width-table {
+  width: 100%;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
 }
 
-mat-toolbar {
-  margin-bottom: 20px;
+.mat-elevation-z8 {
+  margin: 20px; /* Agrega un margen alrededor del contenedor de la tabla */
+}
+
+button {
+  margin-top: 50px;
 }
