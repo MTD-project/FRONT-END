@@ -11,6 +11,8 @@ footer {
   display: flex;
   color: white;
   font-family: "League Spartan", sans-serif;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 footer h1 {
@@ -50,11 +52,16 @@ footer p {
 }
 
 .logos {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  allign-items: center;
   margin-left: 64px;
   margin-right: 30px;
 }
 
 .lema {
+  text-align: center;
   padding-left: 150px;
   font-size: 14px;
 }
