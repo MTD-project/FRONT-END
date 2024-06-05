@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {DatosActualizarUsuario, User, Usuario} from '../models/user.model';
+import {DatosActualizarUsuario, Usuario} from '../models/user.model';
 import baserUrl from "./helper";
 
 @Injectable({
@@ -12,8 +12,8 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  registerUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, user);
+  registerUser(user: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.apiUrl}/register`, user);
   }
 
   obtenerPerfil(): Observable<Usuario> {

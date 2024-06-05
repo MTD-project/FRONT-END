@@ -11,8 +11,8 @@ export class UserGuard implements CanActivate {
 
   canActivate() {
     return this.authService.getRole().pipe(
-      map(role => {
-        if (role === 'MAKER') {
+      map(rol => {
+        if (rol === 'MAKER') {
           return true;
         } else {
           this.router.navigate(['/no-permission']); // Redirigir si no tiene permiso

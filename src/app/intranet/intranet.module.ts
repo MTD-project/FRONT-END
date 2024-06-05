@@ -30,6 +30,7 @@ import {InicioComponent} from "./inicio.component";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     ActividadesComponent,
     UserComponent,
     AdminComponent,
-    InicioComponent
+    InicioComponent,
+    RoleDialogComponent
   ],
   imports: [
     CommonModule,
