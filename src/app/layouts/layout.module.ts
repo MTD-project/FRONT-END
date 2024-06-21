@@ -13,13 +13,16 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import {FormsModule} from "@angular/forms";
+import { HeaderLoggedinComponent } from './header-loggedin/header-loggedin.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    HeaderLoggedinComponent,
+
   ],
 
     imports: [
@@ -38,7 +41,8 @@ import {FormsModule} from "@angular/forms";
 
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderLoggedinComponent
   ],
 
 })

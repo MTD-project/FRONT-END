@@ -33,7 +33,7 @@ export class LoginDialogComponent {
         this.authService.getRole().subscribe(role => {
           this.dialogRef.close(); // Agregado para cerrar dialog
           if (role === 'ADMIN') {
-            this.router.navigate(['/intranet/admin']);
+            this.router.navigate(['/intranet/admin/calendario']);
           } else {
             this.router.navigate(['/intranet/user/calendario']);
           }

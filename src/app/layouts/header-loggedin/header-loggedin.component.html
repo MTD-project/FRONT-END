@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar">
+    <a routerLink="/" class="logo">
+      <img src="assets/img/LOGASO.png" alt="LOGO">
+      <span class="logotexto">MAKE THE<br>DIFFERENCE</span>
+    </a>
+
+    <ul class="nav-menu">
+      <li class="nav-menu-item" *ngIf="isUser">
+        <a routerLink="/intranet/user/calendario" class="nav-menu-link">CALENDARIO</a>
+      </li>
+      <li class="nav-menu-item" *ngIf="isUser">
+        <a routerLink="/intranet/user/actividades" class="nav-menu-link">AREAS</a>
+      </li>
+
+      <li class="nav-menu-item" *ngIf="isAdmin">
+        <a routerLink="/intranet/admin/calendario" class="nav-menu-link">CALENDARIO</a>
+      </li>
+      <li class="nav-menu-item" *ngIf="isAdmin">
+        <a routerLink="/intranet/admin/lista-usuarios" class="nav-menu-link">USUARIOS</a>
+      </li>
+
+      <div class="user">
+        <li class="usericon">
+          <img src="assets/img/usuarioBContorno.png" alt="User Icon" class="usericon" (click)="logout()">
+        </li>
+      </div>
+    </ul>
+  </nav>
+</header>

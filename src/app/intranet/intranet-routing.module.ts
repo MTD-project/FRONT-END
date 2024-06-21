@@ -17,24 +17,23 @@ const routes: Routes = [
 
     { path: '', component: InicioComponent,
     children: [
-        {path: 'calendario', component: CalendarioComponent },
 
         {
           path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
           children: [
 
+            {path: 'lista-usuarios',  component: GestionUsuariosComponent },
+            {path: 'calendario', component: CalendarioComponent },
+            {path: 'lista-usuarios',  component: GestionUsuariosComponent },
+            {path: 'asistencias',  component: AsistenciasComponent },
+            {path: 'areas',  component: AreasComponent },
            ],
         },
         {
           path: 'user', component: UserComponent, canActivate: [UserGuard],
           children: [
             {path: 'calendario',  component: CalendarioComponent },
-            {path: 'lista-usuarios',  component: GestionUsuariosComponent },
-            {path: 'areas',  component: AreasComponent },
             {path: 'actividades',  component: ActividadesComponent },
-            {path: 'asistencias',  component: AsistenciasComponent }
-
-
 
            ],
         }
