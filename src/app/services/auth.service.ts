@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 import baserUrl from './helper';
 
@@ -44,7 +44,11 @@ export class AuthService {
 
   // Método para registrar un nuevo usuario
   public register(user: any): Observable<any> {
-    return this.http.post(`${baserUrl}/api/v1/usuario/registrar`, user);
+    return this.http.post(`${baserUrl}/api/v1/usuario/registrar`, user).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
   }
 
   public setToken(token: string): void {

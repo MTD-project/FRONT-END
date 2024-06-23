@@ -5,29 +5,44 @@
     </div>
     <h2 mat-dialog-title>Regístrate</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched}">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre" placeholder="Ingresa tu nombre" required>
+        <mat-error *ngIf="registerForm.get('nombre')?.hasError('required')">El nombre es requerido</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched}">
         <mat-label>Apellido</mat-label>
         <input matInput formControlName="apellido" placeholder="Ingresa tu apellido" required>
+        <mat-error *ngIf="registerForm.get('apellido')?.hasError('required')">El apellido es requerido</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('telefono')?.invalid && registerForm.get('telefono')?.touched}">
         <mat-label>Teléfono</mat-label>
         <input matInput formControlName="telefono" placeholder="Ingresa tu teléfono">
+        <mat-error *ngIf="registerForm.get('telefono')?.hasError('phoneInUse')">Este teléfono ya está en uso</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('correo')?.invalid && registerForm.get('correo')?.touched}">
         <mat-label>Correo electrónico</mat-label>
         <input matInput type="email" formControlName="correo" placeholder="Ingresa tu correo" required>
+        <mat-error *ngIf="registerForm.get('correo')?.hasError('required')">El correo es requerido</mat-error>
+        <mat-error *ngIf="registerForm.get('correo')?.hasError('email')">Correo no válido</mat-error>
+        <mat-error *ngIf="registerForm.get('correo')?.hasError('emailInUse')">Este correo ya está en uso</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
         <mat-label>Contraseña</mat-label>
         <input matInput type="password" formControlName="password" placeholder="Ingresa tu contraseña" required>
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es requerida</mat-error>
       </mat-form-field>
-      <mat-form-field appearance="fill" class="full-width">
+      <mat-form-field appearance="fill" class="full-width"
+        [ngClass]="{'error': registerForm.get('password_confirmation')?.invalid && registerForm.get('password_confirmation')?.touched}">
         <mat-label>Confirmar contraseña</mat-label>
-        <input matInput type="password" formControlName="password_confirmation" placeholder="Confirma tu contraseña" required>
+        <input matInput type="password" formControlName="password_confirmation" placeholder="Confirma tu contraseña"
+          required>
+        <mat-error *ngIf="registerForm.hasError('passwordsMismatch')">Las contraseñas no coinciden</mat-error>
       </mat-form-field>
       <div mat-dialog-actions align="end" class="action-buttons">
         <button mat-button type="submit" class="register-button">Registrarse</button>
