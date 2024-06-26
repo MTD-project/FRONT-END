@@ -32,6 +32,7 @@ import { LoginDialogComponent } from './layouts/login-dialog/login-dialog.compon
     LayoutModule
 
   ],
+
   providers: [],
   bootstrap: [AppComponent, LoginDialogComponent],
 })

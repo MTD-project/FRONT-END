@@ -11,12 +11,18 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
+import { LoginComponent } from './login/login.component';
+import { LoginPopupComponent } from './login/login-popup/login-popup.component';
+import { ForgottComponent } from './login/forgott/forgott.component';
 
 
 
 @NgModule({
   declarations: [
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent,
+    LoginPopupComponent,
+    ForgottComponent
   ],
   imports: [
     CommonModule,

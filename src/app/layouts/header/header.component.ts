@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn = false;
+  userRole: string = '';
 
   constructor(public dialog: MatDialog, private authService: AuthService) {}
 
@@ -21,6 +22,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.authService.isLoggedIn.subscribe(status => {
       this.isLoggedIn = status;
+    });
+    this.authService.getRole().subscribe(role => {
+      this.userRole = role;
     });
   }
 

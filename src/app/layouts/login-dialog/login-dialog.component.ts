@@ -56,7 +56,7 @@ export class LoginDialogComponent {
   }
 
   onRegister() {
-    this.dialogRef.close(); // Cerrar el diálogo antes de la navegación
+    this.dialogRef.close();
     this.router.navigate(['/ingreso/register']);
   }
 }

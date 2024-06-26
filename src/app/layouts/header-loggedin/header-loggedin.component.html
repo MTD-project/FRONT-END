@@ -14,6 +14,10 @@
       </li>
 
       <li class="nav-menu-item" *ngIf="isAdmin">
+        <a routerLink="/intranet/user/actividades" class="nav-menu-link">AREAS</a>
+      </li>
+
+      <li class="nav-menu-item" *ngIf="isAdmin">
         <a routerLink="/intranet/admin/calendario" class="nav-menu-link">CALENDARIO</a>
       </li>
       <li class="nav-menu-item" *ngIf="isAdmin">
@@ -22,7 +26,7 @@
 
       <div class="user">
         <li class="usericon">
-          <img src="assets/img/usuarioBContorno.png" alt="User Icon" class="usericon" (click)="logout()">
+          <img src="assets/img/usuarioBContorno.png" alt="User Icon" class="usericon" routerLink="user">
         </li>
       </div>
     </ul>
