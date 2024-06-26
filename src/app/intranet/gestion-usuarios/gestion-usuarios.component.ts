@@ -24,11 +24,17 @@ export class GestionUsuariosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadUsuarios();
+  }
+
+  loadUsuarios(): void {
     this.userService.obtenerUsuarios().subscribe(
       (users: Usuario[]) => {
         this.dataSource.data = users;
+        this.restoreSelection();
+        this.updateCheckboxState();
       },
-      error => {
+      (error: any) => {
         console.error('Error al cargar los usuarios', error);
         this.snackBar.open('Error al cargar los usuarios', 'Cerrar', {
           duration: 3000,
@@ -37,20 +43,36 @@ export class GestionUsuariosComponent implements OnInit {
     );
   }
 
-  isAllSelected() {
+  isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
 
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
+  masterToggle(): void {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+    } else {
       this.dataSource.data.forEach(row => this.selection.select(row));
+    }
+    this.updateCheckboxState();
   }
 
-  toggle(row: Usuario) {
+  toggle(row: Usuario): void {
     this.selection.toggle(row);
+    this.updateCheckboxState();
+  }
+
+  updateCheckboxState(): void {
+    const allSelected = this.isAllSelected();
+    const indeterminate = this.selection.hasValue() && !allSelected;
+  }
+
+  checkboxLabel(row?: Usuario): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id ?? ''}`;
   }
 
   openRoleDialog(): void {
@@ -64,27 +86,32 @@ export class GestionUsuariosComponent implements OnInit {
 
     const dialogRef = this.dialog.open(RoleDialogComponent, {
       width: '250px',
-      data: { selectedUsers, newRole: '' }
+      data: { selectedUsers: selectedUsers.map(user => user.id).filter(id => id !== undefined) as number[], newRole: '' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const selectedUserIds = selectedUsers.map(user => user.id).filter(id => id !== undefined) as number[];
-        this.userService.actualizarRoles({
-          selectedUsers: selectedUserIds,
-          newRole: result
-        }).subscribe(() => {
-          this.snackBar.open('Roles actualizados exitosamente', 'Cerrar', {
-            duration: 2000,
-          });
-          this.ngOnInit();
-        }, error => {
-          console.error('Error al actualizar los roles', error);
-          this.snackBar.open('Error al actualizar los roles', 'Cerrar', {
-            duration: 3000,
-          });
+        this.snackBar.open('Roles actualizados exitosamente', 'Cerrar', {
+          duration: 2000,
         });
+        this.loadUsuarios(); // Actualiza la lista de usuarios después de actualizar los roles
+      }
+    }, error => {
+      console.error('Error al cerrar el diálogo', error);
+      this.snackBar.open('Error al cerrar el diálogo', 'Cerrar', {
+        duration: 3000,
+      });
+    });
+  }
+
+  private restoreSelection(): void {
+    const selectedIds = this.selection.selected.map(user => user.id);
+    this.selection.clear();
+    this.dataSource.data.forEach(row => {
+      if (selectedIds.includes(row.id)) {
+        this.selection.select(row);
       }
     });
+    this.updateCheckboxState();
   }
 }

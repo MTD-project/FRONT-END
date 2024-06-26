@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../../services/auth.service";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../../../services/auth.service";
+import { Router } from "@angular/router";
 import { LoginDialogComponent } from '../../../layouts/login-dialog/login-dialog.component';
 import Swal from 'sweetalert2';
-import {MatDialog} from "@angular/material/dialog";
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MatDialog } from "@angular/material/dialog";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
   styleUrls: ['./register-user.component.css']
 })
-export class RegisterUserComponent implements OnInit{
+export class RegisterUserComponent implements OnInit {
 
   registerForm: FormGroup;
 
@@ -21,11 +21,6 @@ export class RegisterUserComponent implements OnInit{
     private router: Router,
     private dialog: MatDialog
   ) {
-    this.registerForm = this.fb.group({})
-  }
-
-
-  ngOnInit(): void {
     this.registerForm = this.fb.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -33,11 +28,18 @@ export class RegisterUserComponent implements OnInit{
       correo: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       password_confirmation: ['', Validators.required]
-    });
+    }, { validators: this.passwordsMatchValidator });
+  }
+
+  ngOnInit(): void {}
+
+  passwordsMatchValidator(form: FormGroup): null | object {
+    return form.get('password')!.value === form.get('password_confirmation')!.value ? null : { passwordsMismatch: true };
   }
 
   onSubmit(): void {
     if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
       return;
     }
 
@@ -50,16 +52,23 @@ export class RegisterUserComponent implements OnInit{
           icon: 'success',
           title: 'Registro exitoso',
           text: 'Tu cuenta ha sido creada con éxito.',
-        }); // Muestra mensaje de éxito
-        this.router.navigate(['/intranet/user/calendario']); // Ajusta según tu aplicación
+        });
+        this.router.navigate(['/intranet/user/calendario']);
       },
       (error) => {
-        console.error('Error al registrar', error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al registrar',
-          text: 'Hubo un problema. Intenta nuevamente.',
-        }); // Muestra mensaje de error
+        if (error.status === 409) { // Conflict, email or phone already in use
+          if (error.error.field === 'correo') {
+            this.registerForm.get('correo')!.setErrors({ emailInUse: true });
+          } else if (error.error.field === 'telefono') {
+            this.registerForm.get('telefono')!.setErrors({ phoneInUse: true });
+          }
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error al registrar',
+            text: 'Hubo un problema. Intenta nuevamente.',
+          });
+        }
       }
     );
   }
