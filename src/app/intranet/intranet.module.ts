@@ -4,7 +4,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { AreasComponent } from './areas/areas.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
-import { ActividadComponent } from './actividades/actividades.component';
+import { ActividadesComponent } from './actividades/actividades.component';
 import {IntranetRoutingModule} from "./intranet-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
@@ -42,7 +42,7 @@ import { EditProfileDialogComponent } from './user/edit-profile-dialog/edit-prof
     AreasComponent,
     GestionUsuariosComponent,
     AsistenciasComponent,
-    ActividadComponent,
+    ActividadesComponent,
     UserComponent,
     AdminComponent,
     InicioComponent,
