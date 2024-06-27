@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import baserUrl from './helper';
+import { Usuario } from '../models/user.model';
 
 interface JwtPayload {
   id: number;
@@ -65,15 +66,17 @@ export class AuthService {
     return this.currentUserRole.asObservable();
   }
 
-  public getProfile(): Observable<any> {
+  public getProfile(): Observable<Usuario> {
     const token = this.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
-    return this.http.get(`${baserUrl}/api/v1/usuario/perfil`, { headers }).pipe(
-      map((response: any) => response),
-      catchError((error) => throwError(error))
-    );
+    return this.http
+      .get<Usuario>(`${baserUrl}/api/v1/usuario/perfil`, { headers })
+      .pipe(
+        map((response: Usuario) => response),
+        catchError((error) => throwError(error))
+      );
   }
 
   private checkToken(): void {
