@@ -57,12 +57,11 @@
 }
 
 button.mat-button {
-  min-width: 100px; /* Asegúrate de que los botones tengan un tamaño mínimo */
+  min-width: 100px;
 }
 
-/* Estilos para mantener el fondo gris cuando el usuario escribe */
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  background-color: #f0f0f0; /* Fondo gris */
+  background-color: #f0f0f0;
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex.mat-focused {
@@ -74,5 +73,5 @@ button.mat-button {
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex .mat-input-element:focus {
-  background-color: transparent; /* Mantener el fondo transparente al enfocarse */
+  background-color: transparent;
 }

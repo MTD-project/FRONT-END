@@ -30,6 +30,10 @@ li div{
     margin-inline: 10px;
 }
 
+.mdc-button{
+  color: white;
+}
+
 button {
   background-color: #92297c;
   border: none;
