@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { SelectionModel } from '@angular/cdk/collections';
 import { UserService } from "../../services/user.service";
@@ -15,7 +17,12 @@ import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 export class GestionUsuariosComponent implements OnInit {
   displayedColumns: string[] = ['select', 'nombre', 'apellido', 'correo', 'telefono', 'rol'];
   dataSource = new MatTableDataSource<Usuario>();
+  filteredDataSource = new MatTableDataSource<Usuario>();
   selection = new SelectionModel<Usuario>(true, []);
+  users: Usuario[] = [];
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private userService: UserService,
@@ -30,7 +37,11 @@ export class GestionUsuariosComponent implements OnInit {
   loadUsuarios(): void {
     this.userService.obtenerUsuarios().subscribe(
       (users: Usuario[]) => {
+        this.users = users;
         this.dataSource.data = users;
+        this.filteredDataSource.data = users;
+        this.filteredDataSource.paginator = this.paginator;
+        this.filteredDataSource.sort = this.sort;
         this.restoreSelection();
         this.updateCheckboxState();
       },
@@ -41,6 +52,20 @@ export class GestionUsuariosComponent implements OnInit {
         });
       }
     );
+  }
+
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.filteredDataSource.filter = filterValue;
+  }
+
+  filterByRole(role: string): void {
+    if (role === '') {
+      this.filteredDataSource.data = this.users;
+    } else {
+      this.filteredDataSource.data = this.users.filter(user => user.rol.toLowerCase() === role.toLowerCase());
+    }
   }
 
   isAllSelected(): boolean {
