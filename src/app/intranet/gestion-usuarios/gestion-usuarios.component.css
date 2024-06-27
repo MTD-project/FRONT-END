@@ -72,6 +72,7 @@ button:focus {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  margin-left: 100px;
 }
 
 .search-container input {
@@ -96,6 +97,7 @@ button:focus {
 /* Estilos para los filtros */
 .filter-container {
   margin-bottom: 20px;
+  margin-left: 100px;
 }
 
 .filter-container button {
@@ -117,6 +119,7 @@ button:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 100px;
 }
 
 .button-container .confirm-button {
