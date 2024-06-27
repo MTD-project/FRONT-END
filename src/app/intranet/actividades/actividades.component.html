@@ -1,1 +1,45 @@
 <p>actividades works!</p>
+<div class="container">
+  <div class="left-panel">
+    <h2>Áreas</h2>
+    <ul class="area-list">
+      <li *ngFor="let area of areas" (click)="selectArea(area)" [class.selected]="area === selectedArea">
+        {{ area.nombre }}
+      </li>
+    </ul>
+  </div>
+  <div class="right-panel">
+    <div *ngIf="selectedArea">
+      <h2>Actividades de {{ selectedArea.nombre }}</h2>
+      <table class="activity-table">
+        <thead>
+        <tr>
+          <th>Actividad</th>
+          <th>Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let actividad of selectedArea.actividades" (click)="selectActividad(actividad)">
+          <td>{{ actividad.nombre }}</td>
+          <td [ngClass]="{
+              'completed': actividad.estado === 'FINALIZADO',
+              'in-progress': actividad.estado === 'EN_CURSO',
+              'pending': actividad.estado === 'PENDIENTE'
+            }">
+            {{ actividad.estado }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div *ngIf="selectedActividad" class="activity-details">
+        <h3>Detalles de la actividad: {{ selectedActividad.nombre }}</h3>
+        <p>{{ selectedActividad.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ selectedActividad.fecha }}</p>
+        <p><strong>Enlace:</strong> <a [href]="selectedActividad.linkReunion.url" target="_blank">Unirse</a></p>
+      </div>
+      <div class="participant-counter">
+        <p>Participantes: </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,10 +13,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {LayoutModule} from "./layouts/layout.module";
 import {AuthenticationModule} from "./authentication/authentication.module";
 import { LoginDialogComponent } from './layouts/login-dialog/login-dialog.component';
+import { IntranetModule } from './intranet/intranet.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,8 @@ import { LoginDialogComponent } from './layouts/login-dialog/login-dialog.compon
     MatCardModule,
     ReactiveFormsModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    IntranetModule
 
   ],
 

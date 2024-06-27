@@ -4,7 +4,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { AreasComponent } from './areas/areas.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
-import { ActividadesComponent } from './actividades/actividades.component';
+import { ActividadComponent } from './actividades/actividades.component';
 import {IntranetRoutingModule} from "./intranet-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
@@ -31,7 +31,7 @@ import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { RoleDialogComponent } from './role-dialog/role-dialog.component';
-
+import { AreaService } from '../services/area.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { RoleDialogComponent } from './role-dialog/role-dialog.component';
     AreasComponent,
     GestionUsuariosComponent,
     AsistenciasComponent,
-    ActividadesComponent,
+    ActividadComponent,
     UserComponent,
     AdminComponent,
     InicioComponent,

@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.left-panel {
+  width: 30%;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.right-panel {
+  width: 70%;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.area-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.area-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.area-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.area-list li.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.activity-table th, .activity-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.activity-table th {
+  background-color: #f2f2f2;
+}
+
+.activity-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.completed {
+  color: green;
+}
+
+.in-progress {
+  color: orange;
+}
+
+.pending {
+  color: red;
+}
+
+.activity-details {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.participant-counter {
+  margin-top: 10px;
+}
