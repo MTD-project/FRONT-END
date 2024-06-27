@@ -9,10 +9,7 @@
     <ul class="nav-menu">
       <div class="user">
         <li class="usericon">
-          <img *ngIf="!isLoggedIn" src="assets/img/usuarioBContorno.png" class="usericon" (click)="openLoginDialog()">
-          <a *ngIf="isLoggedIn" [routerLink]="['user']">
-            <img src="assets/img/usuarioBContorno.png" class="usericon">
-          </a>
+          <img  src="assets/img/usuarioBContorno.png" class="usericon" (click)="openLoginDialog()">
         </li>
       </div>
     </ul>
