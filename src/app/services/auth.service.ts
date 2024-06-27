@@ -1,8 +1,9 @@
+// auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { jwtDecode } from 'jwt-decode';
+import {jwtDecode} from "jwt-decode";
 import baserUrl from './helper';
 
 interface JwtPayload {
@@ -25,24 +26,18 @@ export class AuthService {
   }
 
   public login(correo: string, password: string): Observable<any> {
-    if (correo === '' && password === '') {
-      this.loggedIn.next(true);
-    } else {
-      this.loggedIn.next(false);
-    }
     const loginData = { correo, password };
     return this.http.post(`${baserUrl}/api/v1/usuario/login`, loginData).pipe(
       map((response: any) => {
         const token = response.token;
         this.setToken(token);
-        const decodedToken = jwtDecode<JwtPayload>(token); // Decodificar como JwtPayload
-        this.currentUserRole.next(decodedToken.role); // Usar el role del token
+        const decodedToken = jwtDecode<JwtPayload>(token);
+        this.currentUserRole.next(decodedToken.role);
         return response;
       })
     );
   }
 
-  // Método para registrar un nuevo usuario
   public register(user: any): Observable<any> {
     return this.http.post(`${baserUrl}/api/v1/usuario/registrar`, user).pipe(
       catchError((error) => {
@@ -68,6 +63,17 @@ export class AuthService {
 
   public getRole(): Observable<string> {
     return this.currentUserRole.asObservable();
+  }
+
+  public getProfile(): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(`${baserUrl}/api/v1/usuario/perfil`, { headers }).pipe(
+      map((response: any) => response),
+      catchError((error) => throwError(error))
+    );
   }
 
   private checkToken(): void {

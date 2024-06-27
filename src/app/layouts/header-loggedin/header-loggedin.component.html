@@ -28,6 +28,14 @@
         <a routerLink="/intranet/admin/lista-usuarios" class="nav-menu-link">USUARIOS</a>
       </li>
 
+      <li class="nav-menu-item" *ngIf="isAdmin">
+        <a routerLink="/intranet/admin/perfil" class="nav-menu-link">{{ userName }}</a>
+      </li>
+
+      <li class="nav-menu-item" *ngIf="isUser">
+        <a routerLink="/intranet/user/perfil" class="nav-menu-link">{{ userName }}</a>
+      </li>
+
       <div class="user">
         <li class="usericon">
           <img src="../../../assets/img/arrow-right-to-bracket-solid.png" alt="User Icon" class="usericon" routerLink="user" (click)="logout()">
