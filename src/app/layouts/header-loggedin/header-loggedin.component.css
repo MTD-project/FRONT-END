@@ -1,13 +1,11 @@
-
 .navbar {
-  background-color: #3DB6B1;
+  background-color: #3db6b1;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Estilos para el logotipo */
 .logo {
   display: flex;
   align-items: center;
@@ -49,7 +47,7 @@
   height: 100%; /* Asegura que la imagen ocupe todo el contorno del contenedor */
 }
 
-.nav-menu-link{
+.nav-menu-link {
   color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 550;
@@ -59,11 +57,10 @@
   margin-top: 20px;
   margin-bottom: 20px;
   display: inline-block;
+  transition: transform 0.5s, font-size 0.5s;
 }
 
-.nav-menu-link:hover{
+.nav-menu-link:hover {
   text-decoration: underline;
-  font-size: 30px;
-  transition: 0.5s;
+  transform: scale(1.2); /* Agranda el enlace al 120% de su tamaño original */
 }
-
