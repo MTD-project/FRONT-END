@@ -34,6 +34,8 @@ import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 import { AreaService } from '../services/area.service';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
+import { EventModalComponent } from './event-modal/event-modal.component';
+import {ComplementModalComponent} from "./event-modal/complement-modal/complement-modal.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
     InicioComponent,
     RoleDialogComponent,
     PerfilUsuarioComponent,
-    PerfilAdminComponent
+    PerfilAdminComponent,
+    EventModalComponent,
+    ComplementModalComponent
   ],
   imports: [
     CommonModule,
