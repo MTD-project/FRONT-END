@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Agregar Actividad</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Nombre de la Actividad</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Descripción</mat-label>
+    <textarea matInput [(ngModel)]="data.description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha</mat-label>
+    <input matInput [(ngModel)]="data.fecha" type="date">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Enlace</mat-label>
+    <input matInput [(ngModel)]="data.linkReunion.url">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Estado</mat-label>
+    <mat-select [(ngModel)]="data.estado">
+      <mat-option value="PENDIENTE">Pendiente</mat-option>
+      <mat-option value="EN_CURSO">En Curso</mat-option>
+      <mat-option value="FINALIZADO">Finalizado</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Aceptar</button>
+</div>

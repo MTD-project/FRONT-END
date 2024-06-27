@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Area } from '../models/area.model';
+import { Actividad } from '../models/actividad.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,12 @@ export class AreaService {
     return this.http.get<Area[]>(this.apiUrl);
   }
 
-  getAreaById(id: number): Observable<Area> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Area>(url);
+  addArea(area: Area): Observable<Area> {
+    return this.http.post<Area>(this.apiUrl, area);
+  }
+
+  addActivity(areaId: number, actividad: Actividad): Observable<Actividad> {
+    const url = `${this.apiUrl}/${areaId}/actividades`;
+    return this.http.post<Actividad>(url, actividad);
   }
 }

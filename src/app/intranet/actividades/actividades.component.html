@@ -2,6 +2,7 @@
 <div class="container">
   <div class="left-panel">
     <h2>Áreas</h2>
+    <button (click)="openAddAreaDialog()">Agregar Área</button>
     <ul class="area-list">
       <li *ngFor="let area of areas" (click)="selectArea(area)" [class.selected]="area === selectedArea">
         {{ area.nombre }}
@@ -11,6 +12,7 @@
   <div class="right-panel">
     <div *ngIf="selectedArea">
       <h2>Actividades de {{ selectedArea.nombre }}</h2>
+      <button mat-raised-button color="accent" (click)="openAddActivityDialog()">Agregar Actividad</button>
       <table class="activity-table">
         <thead>
         <tr>
@@ -36,9 +38,6 @@
         <p>{{ selectedActividad.descripcion }}</p>
         <p><strong>Fecha:</strong> {{ selectedActividad.fecha }}</p>
         <p><strong>Enlace:</strong> <a [href]="selectedActividad.linkReunion.url" target="_blank">Unirse</a></p>
-      </div>
-      <div class="participant-counter">
-        <p>Participantes: </p>
       </div>
     </div>
   </div>

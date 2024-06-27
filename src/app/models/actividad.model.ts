@@ -3,6 +3,6 @@ export interface Actividad {
   nombre: string;
   descripcion: string;
   fecha: string;
-  linkReunion: { id: number; url: string };
-  estado: 'PENDIENTE' | 'EN_CURSO' | 'FINALIZADO';
+  linkReunion: { url: string };
+  estado: string;
 }
