@@ -1,0 +1,47 @@
+* {
+  list-style: none;
+}
+
+.perfil-usuario {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+}
+
+img {
+  height: 250px;
+  width: 250px;
+  margin-top: 50px;
+}
+
+.lista-datos {
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 5px;
+  font-size: 25px;
+}
+
+li div{
+    margin-inline: 10px;
+}
+
+button {
+  background-color: #92297c;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px;
+  padding-block: 10px;
+  padding-inline: 30px;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.2);
+}
