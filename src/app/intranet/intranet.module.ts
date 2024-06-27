@@ -32,6 +32,8 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { RoleDialogComponent } from './role-dialog/role-dialog.component';
 import { AreaService } from '../services/area.service';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AreaService } from '../services/area.service';
     UserComponent,
     AdminComponent,
     InicioComponent,
-    RoleDialogComponent
+    RoleDialogComponent,
+    PerfilUsuarioComponent,
+    PerfilAdminComponent
   ],
   imports: [
     CommonModule,

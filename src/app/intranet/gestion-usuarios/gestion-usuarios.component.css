@@ -43,16 +43,7 @@ td.mat-cell {
 }
 
 /* Estilos para los botones */
-button {
-  background-color: #5a189a;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
-}
+
 
 button:hover {
   background-color: #3c096c;

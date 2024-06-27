@@ -10,6 +10,8 @@ import {AreasComponent} from "./areas/areas.component";
 import {AsistenciasComponent} from "./asistencias/asistencias.component";
 import {GestionUsuariosComponent} from "./gestion-usuarios/gestion-usuarios.component";
 import {ActividadComponent} from "./actividades/actividades.component";
+import {PerfilUsuarioComponent} from "./perfil-usuario/perfil-usuario.component";
+import {PerfilAdminComponent} from "./perfil-admin/perfil-admin.component";
 
 
 
@@ -28,6 +30,7 @@ const routes: Routes = [
             {path: 'asistencias',  component: AsistenciasComponent },
             {path: 'areas',  component: AreasComponent },
             {path: 'actividades',  component: ActividadComponent },
+            {path: "perfil", component: PerfilAdminComponent}
            ],
         },
         {
@@ -35,7 +38,7 @@ const routes: Routes = [
           children: [
             {path: 'calendario',  component: CalendarioComponent },
             {path: 'actividades',  component: ActividadComponent },
-
+            {path: "perfil", component: PerfilUsuarioComponent}
            ],
         }
       ]
