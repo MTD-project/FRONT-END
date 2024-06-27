@@ -1,4 +1,3 @@
-// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
@@ -21,6 +20,7 @@ export class AuthService {
   private currentUserRole = new BehaviorSubject<string>('');
 
   isLoggedIn = this.loggedIn.asObservable();
+  private apiUrl = `${baserUrl}/password`;
 
   constructor(private http: HttpClient) {
     this.checkToken();
@@ -101,5 +101,15 @@ export class AuthService {
         map((response: any) => response),
         catchError((error) => throwError(error))
       );
+  }
+
+  sendPasswordResetEmail(email: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/reset`, { email });
+  }
+
+  updatePassword(email: string, token: string, newPassword: string): Observable<any> {
+    const url = `${this.apiUrl}/update`;
+    const body = { email, token, newPassword };
+    return this.http.post<any>(url, body);
   }
 }

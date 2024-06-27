@@ -1,4 +1,5 @@
-import {Component, Inject} from '@angular/core';
+// add-area-dialog.component.ts
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AddAreaDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddAreaDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string, description: string }
+    @Inject(MAT_DIALOG_DATA) public data: { nombre: string; descripcion: string }
   ) {}
 
   onNoClick(): void {

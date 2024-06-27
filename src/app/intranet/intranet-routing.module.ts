@@ -9,10 +9,9 @@ import { UserGuard} from "../services/guards/user.guard";
 import {AreasComponent} from "./areas/areas.component";
 import {AsistenciasComponent} from "./asistencias/asistencias.component";
 import {GestionUsuariosComponent} from "./gestion-usuarios/gestion-usuarios.component";
-import { ActividadesComponent} from "./actividades/actividades.component";
+import {ActividadesComponent} from "./actividades/actividades.component";
 import {PerfilUsuarioComponent} from "./perfil-usuario/perfil-usuario.component";
 import {PerfilAdminComponent} from "./perfil-admin/perfil-admin.component";
-
 
 
 const routes: Routes = [

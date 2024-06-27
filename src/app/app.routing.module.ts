@@ -16,7 +16,8 @@ const routes: Routes = [
     path: 'intranet',
     loadChildren: () => import('./intranet/intranet.module').then(m => m.IntranetModule)
   },
-  { path: 'user', component: UserComponent }, 
+  { path: 'user', component: UserComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

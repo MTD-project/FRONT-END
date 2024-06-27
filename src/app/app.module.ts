@@ -31,11 +31,12 @@ import { IntranetModule } from './intranet/intranet.module';
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
-    IntranetModule
+    IntranetModule,
+
 
   ],
 
   providers: [],
-  bootstrap: [AppComponent, LoginDialogComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

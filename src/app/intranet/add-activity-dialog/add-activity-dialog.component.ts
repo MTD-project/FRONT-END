@@ -1,3 +1,4 @@
+// add-activity-dialog.component.ts
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -9,7 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AddActivityDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddActivityDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { name: string, description: string, fecha: string, linkReunion: { url: string }, estado: string }
+    @Inject(MAT_DIALOG_DATA) public data: { nombre: string, descripcion: string, fecha: string, linkReunion: { url: string }, estado: string }
   ) {}
 
   onNoClick(): void {

@@ -1,28 +1,33 @@
+// services/area.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Area } from '../models/area.model';
-import { Actividad } from '../models/actividad.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaService {
-
-  private apiUrl = 'http://localhost:8080/api/v1/area';  // Cambia esto por tu URL de la API
+  private apiUrl = 'http://localhost:8080/api/v1/area';
 
   constructor(private http: HttpClient) { }
 
   getAreas(): Observable<Area[]> {
-    return this.http.get<Area[]>(this.apiUrl);
+    return this.http.get<any>(`${this.apiUrl}/listar`).pipe(
+      map(response => response.content)
+    );
   }
 
   addArea(area: Area): Observable<Area> {
-    return this.http.post<Area>(this.apiUrl, area);
+    return this.http.post<Area>(`${this.apiUrl}/crear`, area);
   }
 
-  addActivity(areaId: number, actividad: Actividad): Observable<Actividad> {
-    const url = `${this.apiUrl}/${areaId}/actividades`;
-    return this.http.post<Actividad>(url, actividad);
+  updateArea(id: number, area: Area): Observable<Area> {
+    return this.http.put<Area>(`${this.apiUrl}/actualizar/${id}`, area);
+  }
+
+  deleteArea(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/eliminar/${id}`);
   }
 }

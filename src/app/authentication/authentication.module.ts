@@ -11,18 +11,17 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
-import { LoginComponent } from './login/login.component';
-import { LoginPopupComponent } from './login/login-popup/login-popup.component';
-import { ForgottComponent } from './login/forgott/forgott.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
 @NgModule({
   declarations: [
     RegisterUserComponent,
-    LoginComponent,
-    LoginPopupComponent,
-    ForgottComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { ForgottComponent } from './login/forgott/forgott.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ]
 })
 

@@ -59,4 +59,9 @@ export class LoginDialogComponent {
     this.dialogRef.close();
     this.router.navigate(['/ingreso/register']);
   }
+
+  onForgotPassword(): void {
+    this.dialogRef.close();
+    this.router.navigate(['/ingreso/forgot-password']);
+  }
 }

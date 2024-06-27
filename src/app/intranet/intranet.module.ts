@@ -4,7 +4,7 @@ import { CalendarioComponent } from './calendario/calendario.component';
 import { AreasComponent } from './areas/areas.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { AsistenciasComponent } from './asistencias/asistencias.component';
-import { ActividadesComponent } from './actividades/actividades.component';
+import {ActividadesComponent} from "./actividades/actividades.component";
 import {IntranetRoutingModule} from "./intranet-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
@@ -35,6 +35,11 @@ import { AreaService } from '../services/area.service';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { PerfilAdminComponent } from './perfil-admin/perfil-admin.component';
 import { EditProfileDialogComponent } from './user/edit-profile-dialog/edit-profile-dialog.component';
+import {EventModalComponent} from "./event-modal/event-modal.component";
+import {ComplementModalComponent} from "./event-modal/complement-modal/complement-modal.component";
+import {AddAreaDialogComponent} from "./add-area-dialog/add-area-dialog.component";
+import {AddActivityDialogComponent} from "./add-activity-dialog/add-activity-dialog.component";
+import {AuthenticationModule} from "../authentication/authentication.module";
 
 @NgModule({
   declarations: [
@@ -49,7 +54,11 @@ import { EditProfileDialogComponent } from './user/edit-profile-dialog/edit-prof
     RoleDialogComponent,
     PerfilUsuarioComponent,
     PerfilAdminComponent,
-    EditProfileDialogComponent
+    EditProfileDialogComponent,
+    EventModalComponent,
+    ComplementModalComponent,
+    AddAreaDialogComponent,
+    AddActivityDialogComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +85,8 @@ import { EditProfileDialogComponent } from './user/edit-profile-dialog/edit-prof
     MatIconModule,
     MatTableModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    AuthenticationModule
 
   ]
 })
