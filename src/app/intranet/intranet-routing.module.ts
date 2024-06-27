@@ -27,6 +27,7 @@ const routes: Routes = [
             {path: 'lista-usuarios',  component: GestionUsuariosComponent },
             {path: 'asistencias',  component: AsistenciasComponent },
             {path: 'areas',  component: AreasComponent },
+            {path: 'actividades',  component: ActividadComponent },
            ],
         },
         {

@@ -10,11 +10,15 @@
         <a routerLink="/intranet/user/calendario" class="nav-menu-link">CALENDARIO</a>
       </li>
       <li class="nav-menu-item" *ngIf="isUser">
-        <a routerLink="/intranet/user/actividades" class="nav-menu-link">AREAS</a>
+        <a routerLink="/intranet/user/actividades" class="nav-menu-link">ACTIVIDADES</a>
       </li>
 
       <li class="nav-menu-item" *ngIf="isAdmin">
-        <a routerLink="/intranet/user/actividades" class="nav-menu-link">AREAS</a>
+        <a routerLink="/intranet/admin/areas" class="nav-menu-link">AREAS</a>
+      </li>
+
+      <li class="nav-menu-item" *ngIf="isAdmin">
+        <a routerLink="/intranet/admin/actividades" class="nav-menu-link">ACTIVIDADES</a>
       </li>
 
       <li class="nav-menu-item" *ngIf="isAdmin">
