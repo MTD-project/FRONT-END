@@ -1,0 +1,23 @@
+.full-width {
+  width: 100%;
+}
+
+.dialog-content {
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.save-button {
+  background-color: #92297c; /* Color morado */
+  color: white !important; /* Color del texto blanco */
+}
+
+.cancel-button {
+  background-color: #3db6b1; /* Color turquesa */
+  color: white !important; /* Color del texto blanco */
+}

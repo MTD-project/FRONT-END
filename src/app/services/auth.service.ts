@@ -87,4 +87,19 @@ export class AuthService {
       this.loggedIn.next(true);
     }
   }
+
+  public updateProfile(userData: Usuario): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http
+      .put(`${baserUrl}/api/v1/usuario/perfil/actualizar`, userData, {
+        headers,
+      })
+      .pipe(
+        map((response: any) => response),
+        catchError((error) => throwError(error))
+      );
+  }
 }
